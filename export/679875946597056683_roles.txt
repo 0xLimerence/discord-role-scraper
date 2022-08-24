@@ -1,0 +1,99 @@
+|   Position | Role Name             |             Role ID | Admin?   | Manage Roles?   | Manage Channels?   | @Everyone?   | Webhooks?   | Tags    |
+|------------|-----------------------|---------------------|----------|-----------------|--------------------|--------------|-------------|---------|
+|         96 | -                     |  886986457955307581 | Yes      | No              | No                 | No           | No          |         |
+|         95 | EmpyManager           | 1006512201911242892 | Yes      | Yes             | Yes                | No           | No          | Bot     |
+|         94 | Valcord Coaching      | 1007645361227178058 | Yes      | Yes             | Yes                | Yes          | Yes         | Bot     |
+|         93 | Bot Roles             |  703067116290441316 | No       | No              | No                 | No           | No          |         |
+|         92 | Modmail               |  712021727655231669 | No       | Yes             | Yes                | No           | No          | Bot     |
+|         91 | VANGUARD              |  813505332927004713 | No       | Yes             | Yes                | Yes          | Yes         | Bot     |
+|         90 | Valorant Role Tracker |  977098361754755096 | No       | Yes             | Yes                | No           | No          | Bot     |
+|         89 | Zeppelin              |  802330996305166367 | No       | Yes             | Yes                | No           | Yes         | Bot     |
+|         88 | Sentinel              |  760654254129414207 | No       | Yes             | Yes                | No           | No          |         |
+|         87 | Beemo                 |  684139552775864380 | No       | Yes             | Yes                | No           | Yes         | Bot     |
+|         86 | Watchdog              |  872229996717019137 | No       | No              | No                 | No           | Yes         | Bot     |
+|         85 | Event Mail            | 1003002315810291786 | No       | No              | No                 | No           | No          | Bot     |
+|         84 | Soul Music Canary     | 1006530082900299829 | Yes      | No              | No                 | No           | No          | Bot     |
+|         83 | Soul Music Premium    | 1006530262718492737 | No       | No              | Yes                | No           | No          | Bot     |
+|         82 | Soul Music            | 1006529940134580317 | No       | No              | Yes                | No           | No          | Bot     |
+|         81 | Staff Roles           |  703067021302300803 | No       | No              | No                 | No           | No          |         |
+|         80 | Beemo Helper          |  987387775449964608 | No       | No              | No                 | No           | No          | Bot     |
+|         79 | Administrator         |  886986131164520518 | No       | No              | No                 | No           | No          |         |
+|         78 | Advisory Team         |  801521429752840233 | No       | No              | No                 | No           | No          |         |
+|         77 | Senior Moderator      |  758104829242507294 | No       | No              | No                 | No           | No          |         |
+|         76 | Moderator             |  679878500588453889 | No       | Yes             | No                 | No           | No          |         |
+|         75 | Lead Development      |  826591817642409984 | No       | No              | No                 | No           | No          |         |
+|         74 | Senior Events Staff   |  831600567947886663 | No       | Yes             | No                 | No           | No          |         |
+|         73 | Events Team           |  794705591008362506 | No       | No              | No                 | No           | No          |         |
+|         72 | Coaching Management   |  803692457630892042 | No       | No              | No                 | No           | No          |         |
+|         71 | Coach                 |  840836096963248158 | No       | No              | No                 | No           | No          |         |
+|         70 | Esports Update        |  963424292782112809 | No       | No              | No                 | No           | No          |         |
+|         69 | Bot Developer         |  679880109049905202 | No       | No              | No                 | No           | No          |         |
+|         68 | On Break              |  738481945616580700 | No       | No              | No                 | No           | No          |         |
+|         67 | Bot Roles             |  703067746073575505 | No       | No              | No                 | No           | No          |         |
+|         66 | Discord Bot           |  684144438251225099 | No       | No              | No                 | No           | No          |         |
+|         65 | Color Roles           |  740700367741780053 | No       | No              | No                 | No           | No          |         |
+|         64 | Gray                  |  743921901096796242 | No       | No              | No                 | No           | No          |         |
+|         63 | Pink                  |  803691521589117010 | No       | No              | No                 | No           | No          |         |
+|         62 | Purple                |  740700383286001724 | No       | No              | No                 | No           | No          |         |
+|         61 | Blue                  |  740700377942589512 | No       | No              | No                 | No           | No          |         |
+|         60 | Green                 |  740700387832758272 | No       | No              | No                 | No           | No          |         |
+|         59 | Orange                |  740709520082206750 | No       | No              | No                 | No           | No          |         |
+|         58 | Yellow                |  740709524037697666 | No       | No              | No                 | No           | No          |         |
+|         57 | Legend                | 1005891558471647242 | No       | No              | No                 | No           | No          | Premium |
+|         56 | Hero                  | 1005889759077482626 | No       | No              | No                 | No           | No          | Premium |
+|         55 | Adventurer            | 1005887535567868057 | No       | No              | No                 | No           | No          | Premium |
+|         54 | Team Pride            |  981302843455705138 | No       | No              | No                 | No           | No          |         |
+|         53 | Team Seas             |  903593339503398923 | No       | No              | No                 | No           | No          |         |
+|         52 | VALORANT Developer    |  996170425459560448 | No       | No              | No                 | No           | No          |         |
+|         51 | Operator (Lv 50)      |  684140913865392224 | No       | No              | No                 | No           | No          |         |
+|         50 | VIP Roles             |  723277746234458132 | No       | No              | No                 | No           | No          |         |
+|         49 | VALORANT Developer    |  679878748543516682 | No       | No              | No                 | No           | No          |         |
+|         48 | Riot Employee         |  679879141436293120 | No       | No              | No                 | No           | No          |         |
+|         47 | Public Figure         |  803262896062464030 | No       | No              | No                 | No           | No          |         |
+|         46 | Level Roles           |  982733020765253633 | No       | No              | No                 | No           | No          |         |
+|         45 | Phantom (Lv 40)       |  723266895310094336 | No       | No              | No                 | No           | No          |         |
+|         44 | Guardian (Lv 30)      |  684140874556244053 | No       | No              | No                 | No           | No          |         |
+|         43 | Spectre (Lv 20)       |  723266887471071262 | No       | No              | No                 | No           | No          |         |
+|         42 | Sheriff (Lv 10)       |  684140826762149923 | No       | No              | No                 | No           | No          |         |
+|         41 | Ghost (Lv 5)          |  713077794036383857 | No       | No              | No                 | No           | No          |         |
+|         40 | Mod Emergency         |  734862451685720114 | No       | No              | No                 | No           | No          |         |
+|         39 | Emergency             |  679879783630372865 | No       | No              | No                 | No           | No          |         |
+|         38 | Bot Emergency         |  734862578261688342 | No       | No              | No                 | No           | No          |         |
+|         37 | Emergency             |  734862285591412816 | No       | No              | No                 | No           | No          |         |
+|         36 | User Roles 1.0        |  703067967218384928 | No       | No              | No                 | No           | No          |         |
+|         35 | Special Guest         |  737894681026756628 | No       | No              | No                 | No           | No          |         |
+|         34 | Influencer            |  679891815993966593 | No       | No              | No                 | No           | No          |         |
+|         33 | Pro Player            |  802518173823270923 | No       | No              | No                 | No           | No          |         |
+|         32 | Broadcast Talent      |  803385020303540265 | No       | No              | No                 | No           | No          |         |
+|         31 | Legacy Staff          |  707042146149990511 | No       | No              | No                 | No           | No          |         |
+|         30 | Aimlab Combine top 5  |  873275965709643796 | No       | No              | No                 | No           | No          |         |
+|         29 | Server Booster        |  683945994421141506 | No       | No              | No                 | No           | No          | Booster |
+|         28 | News Roles            |  772467781286494268 | No       | No              | No                 | No           | No          |         |
+|         27 | VALORANT News         |  772467946634739753 | No       | No              | No                 | No           | No          |         |
+|         26 | Server News           |  772467950619590657 | No       | No              | No                 | No           | No          |         |
+|         25 | Event News            |  794640081439686696 | No       | No              | No                 | No           | No          |         |
+|         24 | Esports News          |  846369783696195645 | No       | No              | No                 | No           | No          |         |
+|         23 | Misc Roles            |  703066968126783629 | No       | No              | No                 | No           | No          |         |
+|         22 | Pullroom              |  699348236187598879 | No       | No              | No                 | No           | No          |         |
+|         21 | Ranked Roles          |  804106708044480533 | No       | No              | No                 | No           | No          |         |
+|         20 | Radiant               |  804111615527092244 | No       | No              | No                 | No           | No          |         |
+|         19 | Immortal              |  804111607202054195 | No       | No              | No                 | No           | No          |         |
+|         18 | Ascendant             |  989165028215250974 | No       | No              | No                 | No           | No          |         |
+|         17 | Diamond               |  804111333355159622 | No       | No              | No                 | No           | No          |         |
+|         16 | Platinum              |  804111326807851009 | No       | No              | No                 | No           | No          |         |
+|         15 | Gold                  |  804111123708248176 | No       | No              | No                 | No           | No          |         |
+|         14 | Silver                |  804106710997794856 | No       | No              | No                 | No           | No          |         |
+|         13 | Bronze                |  804106709454422099 | No       | No              | No                 | No           | No          |         |
+|         12 | Iron                  |  804106708758167633 | No       | No              | No                 | No           | No          |         |
+|         11 | Unranked              |  804121300108836944 | No       | No              | No                 | No           | No          |         |
+|         10 | Region Roles          |  703066530992357476 | No       | No              | No                 | No           | No          |         |
+|          9 | NA                    |  684195399350616114 | No       | No              | No                 | No           | No          |         |
+|          8 | EU                    |  684195608915214451 | No       | No              | No                 | No           | No          |         |
+|          7 | Asia Pacific          |  804112121054625852 | No       | No              | No                 | No           | No          |         |
+|          6 | Korea                 |  804112328907554876 | No       | No              | No                 | No           | No          |         |
+|          5 | Brazil                |  804112348087582720 | No       | No              | No                 | No           | No          |         |
+|          4 | Latin America         |  804112523426529322 | No       | No              | No                 | No           | No          |         |
+|          3 | Other                 |  685651346031902749 | No       | No              | No                 | No           | No          |         |
+|          2 |                       |  728017453497581579 | No       | No              | No                 | No           | No          |         |
+|          1 | Premium Members       | 1005887530828320880 | No       | No              | No                 | No           | No          |         |
+|          0 | @everyone             |  679875946597056683 | No       | No              | No                 | No           | No          |         |
