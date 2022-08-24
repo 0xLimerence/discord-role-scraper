@@ -4,3 +4,5 @@
 2. Run "install.bat"
 3. Run "checker.py"
 4. Input your Discord token and server ID
+
+![Example scraper output](https://i.postimg.cc/DzDSKWRm/exampleeeeee.png)
