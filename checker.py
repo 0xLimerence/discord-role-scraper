@@ -4,6 +4,7 @@ import requests, os, json, base64, re, sys
 from random import choice
 from colorama import Fore
 from tabulate import tabulate
+import config
 
 def fetch_info():
     locales = ["af", "af-NA", "af-ZA", "agq", "agq-CM", "ak", "ak-GH", "am", "am-ET", "ar", "ar-001", "ar-AE", "ar-BH", "ar-DJ", "ar-DZ", "ar-EG", "ar-EH", "ar-ER", "ar-IL", "ar-IQ", "ar-JO", "ar-KM", "ar-KW", "ar-LB", "ar-LY", "ar-MA", "ar-MR", "ar-OM", "ar-PS", "ar-QA", "ar-SA", "ar-SD", "ar-SO", "ar-SS", "ar-SY", "ar-TD", "ar-TN", "ar-YE", "as", "as-IN", "asa", "asa-TZ", "ast", "ast-ES", "az", "az-Cyrl", "az-Cyrl-AZ", "az-Latn", "az-Latn-AZ", "bas", "bas-CM", "be", "be-BY", "bem", "bem-ZM", "bez", "bez-TZ", "bg", "bg-BG", "bm", "bm-ML", "bn", "bn-BD", "bn-IN", "bo", "bo-CN", "bo-IN", "br", "br-FR", "brx", "brx-IN", "bs", "bs-Cyrl", "bs-Cyrl-BA", "bs-Latn", "bs-Latn-BA", "ca", "ca-AD", "ca-ES", "ca-FR", "ca-IT", "ccp", "ccp-BD", "ccp-IN", "ce", "ce-RU", "cgg", "cgg-UG", "chr", "chr-US", "ckb", "ckb-IQ", "ckb-IR", "cs", "cs-CZ", "cy", "cy-GB", "da", "da-DK", "da-GL", "dav", "dav-KE", "de", "de-AT", "de-BE", "de-CH", "de-DE", "de-IT", "de-LI", "de-LU", "dje", "dje-NE", "dsb", "dsb-DE", "dua", "dua-CM", "dyo", "dyo-SN", "dz", "dz-BT", "ebu", "ebu-KE", "ee", "ee-GH", "ee-TG", "el", "el-CY", "el-GR", "en", "en-001", "en-150", "en-AG", "en-AI", "en-AS", "en-AT", "en-AU", "en-BB", "en-BE", "en-BI", "en-BM", "en-BS", "en-BW", "en-BZ", "en-CA", "en-CC", "en-CH", "en-CK", "en-CM", "en-CX", "en-CY", "en-DE", "en-DG", "en-DK", "en-DM", "en-ER", "en-FI", "en-FJ", "en-FK", "en-FM", "en-GB", "en-GD", "en-GG", "en-GH", "en-GI", "en-GM", "en-GU", "en-GY", "en-HK", "en-IE", "en-IL", "en-IM", "en-IN", "en-IO", "en-JE", "en-JM", "en-KE", "en-KI", "en-KN", "en-KY", "en-LC", "en-LR", "en-LS", "en-MG", "en-MH", "en-MO", "en-MP", "en-MS", "en-MT", "en-MU", "en-MW", "en-MY", "en-NA", "en-NF", "en-NG", "en-NL", "en-NR", "en-NU", "en-NZ", "en-PG", "en-PH", "en-PK", "en-PN", "en-PR", "en-PW", "en-RW", "en-SB", "en-SC", "en-SD", "en-SE", "en-SG", "en-SH", "en-SI", "en-SL", "en-SS", "en-SX", "en-SZ", "en-TC", "en-TK", "en-TO", "en-TT", "en-TV", "en-TZ", "en-UG", "en-UM", "en-US", "en-US-POSIX", "en-VC", "en-VG", "en-VI", "en-VU", "en-WS", "en-ZA", "en-ZM", "en-ZW", "eo", "es", "es-419", "es-AR", "es-BO", "es-BR", "es-BZ", "es-CL", "es-CO", "es-CR", "es-CU", "es-DO", "es-EA", "es-EC", "es-ES", "es-GQ", "es-GT", "es-HN", "es-IC", "es-MX", "es-NI", "es-PA", "es-PE", "es-PH", "es-PR", "es-PY", "es-SV", "es-US", "es-UY", "es-VE", "et", "et-EE", "eu", "eu-ES", "ewo", "ewo-CM", "fa", "fa-AF", "fa-IR", "ff", "ff-CM", "ff-GN", "ff-MR", "ff-SN", "fi", "fi-FI", "fil", "fil-PH", "fo", "fo-DK", "fo-FO", "fr", "fr-BE", "fr-BF", "fr-BI", "fr-BJ", "fr-BL", "fr-CA", "fr-CD", "fr-CF", "fr-CG", "fr-CH", "fr-CI", "fr-CM", "fr-DJ", "fr-DZ", "fr-FR", "fr-GA", "fr-GF", "fr-GN", "fr-GP", "fr-GQ", "fr-HT", "fr-KM", "fr-LU", "fr-MA", "fr-MC", "fr-MF", "fr-MG", "fr-ML", "fr-MQ", "fr-MR", "fr-MU", "fr-NC", "fr-NE", "fr-PF", "fr-PM", "fr-RE", "fr-RW", "fr-SC", "fr-SN", "fr-SY", "fr-TD", "fr-TG", "fr-TN", "fr-VU", "fr-WF", "fr-YT", "fur", "fur-IT", "fy", "fy-NL", "ga", "ga-IE", "gd", "gd-GB", "gl", "gl-ES", "gsw", "gsw-CH", "gsw-FR", "gsw-LI", "gu", "gu-IN", "guz", "guz-KE", "gv", "gv-IM", "ha", "ha-GH", "ha-NE", "ha-NG", "haw", "haw-US", "he", "he-IL", "hi", "hi-IN", "hr", "hr-BA", "hr-HR", "hsb", "hsb-DE", "hu", "hu-HU", "hy", "hy-AM", "id", "id-ID", "ig", "ig-NG", "ii", "ii-CN", "is", "is-IS", "it", "it-CH", "it-IT", "it-SM", "it-VA", "ja", "ja-JP", "jgo", "jgo-CM", "jmc", "jmc-TZ", "ka", "ka-GE", "kab", "kab-DZ", "kam", "kam-KE", "kde", "kde-TZ", "kea", "kea-CV", "khq", "khq-ML", "ki", "ki-KE", "kk", "kk-KZ", "kkj", "kkj-CM", "kl", "kl-GL", "kln", "kln-KE", "km", "km-KH", "kn", "kn-IN", "ko", "ko-KP", "ko-KR", "kok", "kok-IN", "ks", "ks-IN", "ksb", "ksb-TZ", "ksf", "ksf-CM", "ksh", "ksh-DE", "kw", "kw-GB", "ky", "ky-KG", "lag", "lag-TZ", "lb", "lb-LU", "lg", "lg-UG", "lkt", "lkt-US", "ln", "ln-AO", "ln-CD", "ln-CF", "ln-CG", "lo", "lo-LA", "lrc", "lrc-IQ", "lrc-IR", "lt", "lt-LT", "lu", "lu-CD", "luo", "luo-KE", "luy", "luy-KE", "lv", "lv-LV", "mas", "mas-KE", "mas-TZ", "mer", "mer-KE", "mfe", "mfe-MU", "mg", "mg-MG", "mgh", "mgh-MZ", "mgo", "mgo-CM", "mk", "mk-MK", "ml", "ml-IN", "mn", "mn-MN", "mr", "mr-IN", "ms", "ms-BN", "ms-MY", "ms-SG", "mt", "mt-MT", "mua", "mua-CM", "my", "my-MM", "mzn", "mzn-IR", "naq", "naq-NA", "nb", "nb-NO", "nb-SJ", "nd", "nd-ZW", "nds", "nds-DE", "nds-NL", "ne", "ne-IN", "ne-NP", "nl", "nl-AW", "nl-BE", "nl-BQ", "nl-CW", "nl-NL", "nl-SR", "nl-SX", "nmg", "nmg-CM", "nn", "nn-NO", "nnh", "nnh-CM", "nus", "nus-SS", "nyn", "nyn-UG", "om", "om-ET", "om-KE", "or", "or-IN", "os", "os-GE", "os-RU", "pa", "pa-Arab", "pa-Arab-PK", "pa-Guru", "pa-Guru-IN", "pl", "pl-PL", "ps", "ps-AF", "pt", "pt-AO", "pt-BR", "pt-CH", "pt-CV", "pt-GQ", "pt-GW", "pt-LU", "pt-MO", "pt-MZ", "pt-PT", "pt-ST", "pt-TL", "qu", "qu-BO", "qu-EC", "qu-PE", "rm", "rm-CH", "rn", "rn-BI", "ro", "ro-MD", "ro-RO", "rof", "rof-TZ", "ru", "ru-BY", "ru-KG", "ru-KZ", "ru-MD", "ru-RU", "ru-UA", "rw", "rw-RW", "rwk", "rwk-TZ", "sah", "sah-RU", "saq", "saq-KE", "sbp", "sbp-TZ", "se", "se-FI", "se-NO", "se-SE", "seh", "seh-MZ", "ses", "ses-ML", "sg", "sg-CF", "shi", "shi-Latn", "shi-Latn-MA", "shi-Tfng", "shi-Tfng-MA", "si", "si-LK", "sk", "sk-SK", "sl", "sl-SI", "smn", "smn-FI", "sn", "sn-ZW", "so", "so-DJ", "so-ET", "so-KE", "so-SO", "sq", "sq-AL", "sq-MK", "sq-XK", "sr", "sr-Cyrl", "sr-Cyrl-BA", "sr-Cyrl-ME", "sr-Cyrl-RS", "sr-Cyrl-XK", "sr-Latn", "sr-Latn-BA", "sr-Latn-ME", "sr-Latn-RS", "sr-Latn-XK", "sv", "sv-AX", "sv-FI", "sv-SE", "sw", "sw-CD", "sw-KE", "sw-TZ", "sw-UG", "ta", "ta-IN", "ta-LK", "ta-MY", "ta-SG", "te", "te-IN", "teo", "teo-KE", "teo-UG", "tg", "tg-TJ", "th", "th-TH", "ti", "ti-ER", "ti-ET", "to", "to-TO", "tr", "tr-CY", "tr-TR", "tt", "tt-RU", "twq", "twq-NE", "tzm", "tzm-MA", "ug", "ug-CN", "uk", "uk-UA", "ur", "ur-IN", "ur-PK", "uz", "uz-Arab", "uz-Arab-AF", "uz-Cyrl", "uz-Cyrl-UZ", "uz-Latn", "uz-Latn-UZ", "vai", "vai-Latn", "vai-Latn-LR", "vai-Vaii", "vai-Vaii-LR", "vi", "vi-VN", "vun", "vun-TZ", "wae", "wae-CH", "wo", "wo-SN", "xog", "xog-UG", "yav", "yav-CM", "yi", "yi-001", "yo", "yo-BJ", "yo-NG", "yue", "yue-Hans", "yue-Hans-CN", "yue-Hant", "yue-Hant-HK", "zgh", "zgh-MA", "zh", "zh-Hans", "zh-Hans-CN", "zh-Hans-HK", "zh-Hans-MO", "zh-Hans-SG", "zh-Hant", "zh-Hant-HK", "zh-Hant-MO", "zh-Hant-TW", "zu", "zu-ZA"]
@@ -46,67 +47,73 @@ emoji_pattern = re.compile("["
                       "]+", flags=re.UNICODE)
 
 def request_cookie():
-	response1 = requests.get("https://discord.com")
+	response1 = requests.get('https://discord.com')
 	cookie = response1.cookies.get_dict()
 	return cookie
 
+def scrape_guild_info(token, server_id):
+    try:
+        headers['authorization'] = token
+        cookie = request_cookie()
+        response = requests.get(f'https://discord.com/api/v9/guilds/{server_id}', headers=headers, cookies=cookie)
+        server_info = response.json()
+
+        for item, value in server_info.items():
+            if item not in config.GUILD_INFO_TO_SCRAPE:
+                continue
+
+            print(f'{Fore.GREEN}{item}{Fore.RESET}: {value}')
+
+
+    except Exception as error:
+        print(f'{Fore.YELLOW} [!] Error while scraping guild info... {Fore.RESET}({Fore.LIGHTBLACK_EX}{err}{Fore.RESET})')
+        pass
+
 def scrape_roles(token, server_id):
     try:
-        headers["authorization"] = token
+        headers['authorization'] = token
         cookie = request_cookie()
-        response = requests.get(f"https://discord.com/api/v9/guilds/{server_id}/roles", headers=headers, cookies=cookie)
+        response = requests.get(f'https://discord.com/api/v9/guilds/{server_id}/roles', headers=headers, cookies=cookie)
         roles = sorted(response.json(), key=lambda x: x['position'], reverse=True)
 
-        print(response.json())
+        # Edit what permissions you want and in what order you want them in config.py
+        permissions_to_check = config.PERMISSIONS_TO_CHECK
+
+        tab_headers = [header for header in permissions_to_check.keys()]
 
         data = []
-        # Comment out what you dont want, except 'Tags'
-        tab_headers = [
-            'Pos', 
-            'Role Name', 
-            'Role ID',
-            'Mentionable',
-            'Administrator',
-            # 'Manage Guild',
-            'Manage Roles',
-            'Manage Channels',
-            # 'Manage Events',
-            # 'Manage Nicknames',
-            # 'Kick Members',
-            # 'Ban Members',
-            'Mention All',
-            'Webhooks',
-            'App Commands',
-            'Tags', # Dont comment this one out, im not fixing that logical horror
-        ]
         for role in roles:
-            role_info = []
-            role_info.append(role['position'] if 'Pos' in tab_headers else None)
-            role_info.append(emoji_pattern.sub(r'', role['name']).encode('ascii', 'ignore').decode('utf-8') if 'Role Name' in tab_headers else None)
-            role_info.append(role['id'] if 'Role ID' in tab_headers else None)
-            role_info.append(f'{Fore.GREEN}Yes{Fore.RESET}' if role['mentionable'] == True and 'Mentionable' in tab_headers else f'{Fore.RED}No{Fore.RESET}' if 'Mentionable' in tab_headers else None) # Mentionable
 
-            # https://discord.com/developers/docs/topics/permissions
-            role_info.append(f'{Fore.GREEN}Yes{Fore.RESET}' if int(role['permissions']) & 0x0000000000000008 != 0 and 'Administrator'    in tab_headers else f'{Fore.RED}No{Fore.RESET}' if 'Administrator'    in tab_headers else None) # Admin
-            role_info.append(f'{Fore.GREEN}Yes{Fore.RESET}' if int(role['permissions']) & 0x0000000000000020 != 0 and 'Manage Guild'     in tab_headers else f'{Fore.RED}No{Fore.RESET}' if 'Manage Guild'     in tab_headers else None) # Manage guild
-            role_info.append(f'{Fore.GREEN}Yes{Fore.RESET}' if int(role['permissions']) & 0x0000000010000000 != 0 and 'Manage Roles'     in tab_headers else f'{Fore.RED}No{Fore.RESET}' if 'Manage Roles'     in tab_headers else None) # Manage roles
-            role_info.append(f'{Fore.GREEN}Yes{Fore.RESET}' if int(role['permissions']) & 0x0000000000000010 != 0 and 'Manage Channels'  in tab_headers else f'{Fore.RED}No{Fore.RESET}' if 'Manage Channels'  in tab_headers else None) # Manage channels
-            role_info.append(f'{Fore.GREEN}Yes{Fore.RESET}' if int(role['permissions']) & 0x0000000200000000 != 0 and 'Manage Events'    in tab_headers else f'{Fore.RED}No{Fore.RESET}' if 'Manage Events'    in tab_headers else None) # Manage events
-            role_info.append(f'{Fore.GREEN}Yes{Fore.RESET}' if int(role['permissions']) & 0x0000000008000000 != 0 and 'Manage Nicknames' in tab_headers else f'{Fore.RED}No{Fore.RESET}' if 'Manage Nicknames' in tab_headers else None) # Manage nicknames
-            role_info.append(f'{Fore.GREEN}Yes{Fore.RESET}' if int(role['permissions']) & 0x0000000000000002 != 0 and 'Kick Members'     in tab_headers else f'{Fore.RED}No{Fore.RESET}' if 'Kick Members'     in tab_headers else None) # Kick Members
-            role_info.append(f'{Fore.GREEN}Yes{Fore.RESET}' if int(role['permissions']) & 0x0000000000000004 != 0 and 'Ban Members'      in tab_headers else f'{Fore.RED}No{Fore.RESET}' if 'Ban Members'      in tab_headers else None) # Ban Members
-            role_info.append(f'{Fore.GREEN}Yes{Fore.RESET}' if int(role['permissions']) & 0x0000000000020000 != 0 and 'Mention All'      in tab_headers else f'{Fore.RED}No{Fore.RESET}' if 'Mention All'      in tab_headers else None) # Mention All
-            role_info.append(f'{Fore.GREEN}Yes{Fore.RESET}' if int(role['permissions']) & 0x0000000020000000 != 0 and 'Webhooks'         in tab_headers else f'{Fore.RED}No{Fore.RESET}' if 'Webhooks'         in tab_headers else None) # Webhooks
-            role_info.append(f'{Fore.GREEN}Yes{Fore.RESET}' if int(role['permissions']) & 0x0000000080000000 != 0 and 'App Commands'     in tab_headers else f'{Fore.RED}No{Fore.RESET}' if 'App Commands'     in tab_headers else None) # Application commands
-            role_info.append('' + \
-                (f'{Fore.BLUE}Bot{Fore.RESET}' if 'tags' in role and 'bot_id' in role['tags'] else \
-                 f'{Fore.LIGHTMAGENTA_EX}Booster{Fore.RESET}' if 'tags' in role and 'premium_subscriber' in role['tags'] else \
-                 f'{Fore.CYAN}Premium{Fore.RESET}' if 'tags' in role and 'available_for_purchase' in role['tags'] else \
-                 ''
-                )
-            ) # Handle tags
-     
-            role_info = [x for x in role_info if x is not None]
+            role_info = []
+            for item, value in permissions_to_check.items():
+                item = item.lower()
+
+                # Handle non-permission calculations/values
+                if type(value) == bool:
+                    if item == 'tags':
+                        role_info.append('' + \
+                            (
+                                f'{Fore.BLUE}Bot{Fore.RESET}' if 'tags' in role and 'bot_id' in role['tags'] else \
+                                f'{Fore.LIGHTMAGENTA_EX}Booster{Fore.RESET}' if 'tags' in role and 'premium_subscriber' in role['tags'] else \
+                                f'{Fore.CYAN}Premium{Fore.RESET}' if 'tags' in role and 'available_for_purchase' in role['tags'] else \
+                                '' # There are no tags present
+                            )
+                        )
+
+                        continue
+
+                    if item == 'mentionable':
+                        role_info.append(f'{Fore.GREEN}Yes{Fore.RESET}' if role[item] else f'{Fore.RED}No{Fore.RESET}')
+                        continue
+
+                    # If not tags
+                    role_info.append(str(role[item]).encode('ascii', 'ignore').decode('utf-8'))
+                    continue
+
+                # Handle permissions calculations
+                if type(value) == int:
+                    role_info.append(f'{Fore.GREEN}Yes{Fore.RESET}' if int(role['permissions']) & value != 0 else f'{Fore.RED}No{Fore.RESET}')
+
             data.append(role_info)
 
         tab_data = tabulate(data, headers=tab_headers, tablefmt='github')
@@ -120,23 +127,28 @@ def scrape_roles(token, server_id):
         pass
 
     print(f'\n{Fore.YELLOW}[!] Completed{Fore.RESET}')
-    scrape_again = input(f'{Fore.LIGHTBLUE_EX}[!] Scrape another server? (Y/N): {Fore.RESET}')
+    scrape_again = input(f'{Fore.LIGHTBLUE_EX}[!] Scrape another server (ID): {Fore.RESET}')
 
-    if 'n' in scrape_again.lower():
+    # Basically, if there was no input or the input is less than 1 million (stop from accidentally scanning typos/random input)
+    if not scrape_again or int(scrape_again) < 1_000_000:
         return sys.exit()
 
-    main()
+    main(scrape_again)
 
-def main():
+def main(server_id: int=0):
     if os.name == 'nt':
         os.system('cls')
     else:
         os.system('clear')
 
-    print(f'{Fore.RED}Discord Role Scraper v1.1 | Fantasy{Fore.RESET}\n')
+    print(f'{Fore.RED}Discord Role Scraper v1.2 | Fantasy{Fore.RESET}\n')
 
-    token = input(f'{Fore.RED}Token: {Fore.RESET}').strip('\'\"')
-    server_id = input(f'{Fore.RED}Server ID: {Fore.RESET}')
+    if not server_id or server_id == 0:
+        token = input(f'{Fore.RED}Token: {Fore.RESET}').strip('\'\"')
+        server_id = input(f'{Fore.RED}Server ID: {Fore.RESET}')
+
+    if config.SCRAPE_GUILD_INFO:
+        scrape_guild_info(token, server_id)
 
     scrape_roles(token, server_id)
 
