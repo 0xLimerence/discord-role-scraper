@@ -1,8 +1,21 @@
 #!/usr/bin/env python3
 
+VERSION_NUMBER = '1.3'
+
 SCRAPE_GUILD_INFO = True
 
-GUILD_INFO_TO_SCRAPE = ['id', 'name', 'description', 'owner_id', 'region', 'mfa_level', 'vanity_url_code', 'premium_tier', 'premium_subscription_count', 'nsfw']
+GUILD_INFO_TO_SCRAPE = [
+    'id', 
+    'name', 
+    'description', 
+    'owner_id', 
+    'region', 
+    'mfa_level', 
+    'vanity_url_code', 
+    'premium_tier', 
+    'premium_subscription_count', 
+    'nsfw',
+]
 
 # Make sure to keep the formatting
 # DO NOT change any of the values
