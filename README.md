@@ -9,4 +9,4 @@
 
 Your token is NOT saved locally or sent to any 3rd party over the internet
 
-![Example scraper output](https://i.postimg.cc/DzDSKWRm/exampleeeeee.png)
+![Example scraper output](https://i.postimg.cc/SxGNKRJS/wowowowowowow.png)
